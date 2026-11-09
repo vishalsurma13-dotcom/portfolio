@@ -154,7 +154,7 @@ export const nav: Link[] = [
 ];
 
 export const socials: Link[] = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/vishal-sharma-b4744b44a" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/vishal-sharma-b4744b44a/" },
   { label: "Medium", href: "https://medium.com/@vishalsharma" },
   { label: "YouTube", href: "https://www.youtube.com/@vishalsharma" },
   { label: "Instagram", href: "https://www.instagram.com/vishallikhta" },
