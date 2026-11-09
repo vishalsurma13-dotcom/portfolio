@@ -54,7 +54,7 @@ export const site = {
   firstName: "Vishal",
   lastName: "Sharma",
   url: "https://www.vishalsharma.in",
-  email: "hello@vishalsharma.in",
+  email: "vishalsharmaself@gmail.com",
   country: "India",
   role: "Hindi Script Writer, Content Writer और Storyteller",
   /**
