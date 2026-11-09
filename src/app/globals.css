@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   कागज़ और क़लम — design tokens
+   ------------------------------------------------------------------ */
+:root {
+  --paper: #f5f1e8;
+  --paper-2: #ede7da;
+  --ink: #1c1a17;
+  --ink-2: #5b554c;
+  --ink-3: #6f695f; /* #8C857A darkened slightly so small labels pass WCAG AA on paper */
+  --rule: #d9d1c1;
+  --accent: #a8432a;
+
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+
+  --font-serif: var(--font-tiro), "Noto Serif Devanagari", serif;
+  --font-sans: var(--font-mukta), "Noto Sans Devanagari", system-ui, sans-serif;
+  --font-hand: var(--font-kalam), var(--font-mukta), cursive;
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 19px;
+  line-height: 1.85;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Devanagari needs room for matras: never squeeze headings */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+section[id],
+main[id] {
+  scroll-margin-top: 80px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* ------------------------------------------------------------------
+   Component classes
+   ------------------------------------------------------------------ */
+.wrap {
+  margin-inline: auto;
+  max-width: 1080px;
+  padding-inline: 28px;
+}
+
+.section {
+  border-top: 1px solid var(--rule);
+  padding-block: 80px;
+}
+@media (min-width: 768px) {
+  .section {
+    padding-block: 110px;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: top 150ms ease;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* nav underline that grows left → right */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* timeline */
+.timeline > li {
+  position: relative;
+}
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  left: -5px; /* centres the 9px dot on the 1px rule */
+  top: 0.62em;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid var(--ink-2);
+  background: var(--paper);
+}
+.timeline > li:last-child::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* native <details> without the default marker */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+.toggle-sign {
+  display: inline-block;
+  transition: transform 300ms ease;
+}
+details[open] > summary .toggle-sign {
+  transform: rotate(45deg);
+}
+
+/* scroll reveal — only hidden after JS has mounted */
+[data-reveal] {
+  transition:
+    opacity 800ms ease,
+    transform 800ms ease;
+}
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
