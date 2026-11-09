@@ -154,7 +154,7 @@ export const nav: Link[] = [
 ];
 
 export const socials: Link[] = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/vishalsharma" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/vishal-sharma-b4744b44a" },
   { label: "Medium", href: "https://medium.com/@vishalsharma" },
   { label: "YouTube", href: "https://www.youtube.com/@vishalsharma" },
   { label: "Instagram", href: "https://www.instagram.com/vishallikhta" },
@@ -437,7 +437,7 @@ export const writing: SectionMeta & { posts: Post[] } = {
     {
       title: "कानों के लिए लिखना: Script, ज़ोर से पढ़ा गया blog नहीं है",
       platform: "LinkedIn",
-      href: "https://www.linkedin.com/in/vishalsharma/recent-activity/",
+      href: "https://www.linkedin.com/in/vishal-sharma-b4744b44a/recent-activity/",
     },
     {
       title: "Hinglish या शुद्ध हिंदी? अपने channel के लिए सही आवाज़ कैसे चुनें",
